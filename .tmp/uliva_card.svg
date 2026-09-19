@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="312" height="416" viewBox="0 0 312 416">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e9dcc9"/>
+      <stop offset="0.55" stop-color="#e2d3bd"/>
+      <stop offset="1" stop-color="#f5efe6"/>
+    </linearGradient>
+    <radialGradient id="halo">
+      <stop offset="0" stop-color="#c8a373" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#c8a373" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="shoe" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f6f0e6"/>
+      <stop offset="1" stop-color="#bfa07a"/>
+    </linearGradient>
+    <linearGradient id="scrim" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#0f1f1a" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#0f1f1a" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="312" height="416" fill="url(#bg)"/>
+  <ellipse cx="156" cy="150" rx="126" ry="112" fill="url(#halo)"/>
+  <rect x="96" y="196" width="120" height="86" rx="10" fill="#ffffff" opacity="0.5"/>
+  <ellipse cx="156" cy="196" rx="60" ry="13" fill="#ffffff" opacity="0.8"/>
+  <g transform="translate(56,70)">
+    <path d="M10 100 a13 13 0 0 1 13 -13 h158 a13 13 0 0 1 13 13 a13 13 0 0 1 -13 13 h-158 a13 13 0 0 1 -13 -13 z" fill="url(#shoe)" stroke="#8f7351" stroke-opacity="0.35" stroke-width="2"/>
+    <path d="M22 100 C18 78 22 56 34 44 C46 32 66 28 84 34 C96 38 106 48 116 58 C128 70 142 78 158 82 C172 86 184 88 190 92 L192 100 Z" fill="url(#shoe)" stroke="#8f7351" stroke-opacity="0.35" stroke-width="2"/>
+    <path d="M36 44 C48 32 68 28 86 34 L79 50 C65 44 47 46 40 56 Z" fill="#4a3a28" opacity="0.55"/>
+    <path d="M96 40 L84 58" stroke="#ffffff" stroke-opacity="0.8" stroke-width="4" stroke-linecap="round"/>
+    <path d="M116 56 L104 74" stroke="#ffffff" stroke-opacity="0.8" stroke-width="4" stroke-linecap="round"/>
+    <path d="M136 70 L124 88" stroke="#ffffff" stroke-opacity="0.8" stroke-width="4" stroke-linecap="round"/>
+    <path d="M156 82 C170 86 183 88 190 92 L192 100 L148 100 C148 92 150 86 156 82 Z" fill="#ffffff" opacity="0.35"/>
+    <path d="M23 100 h168" stroke="#ffffff" stroke-opacity="0.55" stroke-width="3"/>
+  </g>
+  <rect y="250" width="312" height="166" fill="url(#scrim)"/>
+  <text x="156" y="372" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="900" fill="#ffffff" letter-spacing="-1">MEN'S</text>
+</svg>
