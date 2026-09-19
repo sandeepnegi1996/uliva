@@ -1,6 +1,5 @@
 import type { Product } from "../../types/product";
-import { ProductCard } from "../../components/common/ProductCard";
-import { ProductGrid } from "../../components/common/ProductGrid";
+import { ProductList } from "../(shop)/components/product-list";
 
 type ProductSectionProps = {
   products: Product[];
@@ -23,11 +22,7 @@ export function ProductSection({ products }: ProductSectionProps) {
           </p>
         </div>
 
-        <ProductGrid>
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </ProductGrid>
+        <ProductList products={products} />
       </div>
     </section>
   );

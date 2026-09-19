@@ -92,7 +92,7 @@ export function ProductCard({ product, href = `/products/${product.slug}`, onAdd
           className={`mt-4 inline-flex w-full items-center justify-center rounded-xl px-4 py-3 text-[0.68rem] font-black uppercase tracking-[0.14em] transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f3855] ${
             outOfStock
               ? "cursor-not-allowed bg-stone-100 text-stone-400"
-              : "bg-[#1f3855] text-white hover:bg-[#132b45]"
+              : "bg-[#1f3855] text-white hover:bg-[#132b45] active:scale-95 active:bg-[#0d2033]"
           }`}
         >
           {outOfStock ? "Out of stock" : "Add to cart"}

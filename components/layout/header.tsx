@@ -85,11 +85,11 @@ export function Header() {
       <header className="sticky top-0 z-40 border-b border-stone-200 bg-white/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-[1360px] items-center justify-between gap-4 px-4 py-3 md:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-3" aria-label="Uliva home">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#153d30] text-xl font-black text-[#d9f39b] shadow-inner shadow-white/20">
-              D
+            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#153d30] to-[#2f7d3c] text-2xl font-black italic text-[#d9f39b] shadow-inner shadow-white/20">
+              U
             </div>
             <div className="leading-none">
-              <div className="text-[15px] font-black uppercase tracking-[0.12em] text-[#163d34]">Uliva</div>
+              <div className="text-2xl font-black uppercase tracking-[0.1em] text-[#163d34]">Uliva</div>
               <div className="mt-0.5 text-[7px] font-bold uppercase tracking-[0.32em] text-[#899a88]">Comfort</div>
             </div>
           </Link>
