@@ -1,3 +1,5 @@
+import { categories } from "../data/categories";
+import { products as productData } from "../data/products";
 import { CategorySection } from "./components/category-section";
 import { ProductSection } from "./components/product-section";
 
@@ -5,71 +7,14 @@ const navItems = ["Women", "Men", "Kids", "Footwear", "Accessories", "Sale"];
 
 const brandLogos = ["Myntra", "amazon", "Flipkart", "AJIO"];
 
-const categories = [
-  {
-    name: "Men's",
-    description: "Everyday pairs with room to move.",
-    image: "/category-men.svg",
-    tone: "from-stone-200 via-stone-100 to-stone-50",
-    accent: "text-[#f0c96b]",
-  },
-  {
-    name: "Women's",
-    description: "Soft steps for full days out.",
-    image: "/category-women.svg",
-    tone: "from-rose-200 via-orange-100 to-stone-50",
-    accent: "text-[#f0c96b]",
-  },
-  {
-    name: "Kids",
-    description: "Play-ready comfort that keeps up.",
-    image: "/category-kids.svg",
-    tone: "from-sky-200 via-sky-100 to-stone-50",
-    accent: "text-[#f0c96b]",
-  },
-  {
-    name: "Accessories",
-    description: "The finishing touches for easy days.",
-    image: "/category-accessories.svg",
-    tone: "from-emerald-200 via-emerald-100 to-stone-50",
-    accent: "text-[#f0c96b]",
-  },
-];
-
-const products = [
-  {
-    name: "Stride Flex",
-    category: "Everyday slip-ons",
-    image: "/category-men.svg",
-    price: 2499,
-    originalPrice: 3499,
-    badge: "Sale",
-  },
-  {
-    name: "Cloud Ease",
-    category: "Women's runners",
-    image: "/category-women.svg",
-    price: 2899,
-    originalPrice: 3899,
-    badge: "New",
-  },
-  {
-    name: "Bounce Kick",
-    category: "Kids sneakers",
-    image: "/category-kids.svg",
-    price: 1999,
-    originalPrice: 2799,
-    badge: "Hot",
-  },
-  {
-    name: "Carry Light",
-    category: "Travel essentials",
-    image: "/category-accessories.svg",
-    price: 899,
-    originalPrice: 1499,
-    badge: "Sale",
-  },
-];
+const products = productData.map((product) => ({
+  name: product.name,
+  category: product.category,
+  image: product.images[0],
+  price: product.price,
+  originalPrice: product.mrp,
+  badge: product.isNew ? "New" : product.isSale ? "Sale" : "Hot",
+}));
 
 function IconSearch() {
   return (

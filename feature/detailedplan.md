@@ -131,6 +131,8 @@ src/
 
 # PHASE 1 — Mock Data Layer
 
+Status: Completed
+
 Create realistic mock data that powers the entire application.
 
 ## Product Data
@@ -172,15 +174,15 @@ isSale
 
 ## Acceptance Criteria
 
-* [ ] At least 12–20 realistic products exist.
-* [ ] Both Men's and Women's products exist.
-* [ ] Products have multiple sizes.
-* [ ] Products have multiple colours.
-* [ ] Some products have discounts.
-* [ ] Some products are out of stock.
-* [ ] Mock orders exist.
-* [ ] All UI features can use this data.
-* [ ] Product information is not unnecessarily hardcoded inside components.
+* [x] At least 12–20 realistic products exist.
+* [x] Both Men's and Women's products exist.
+* [x] Products have multiple sizes.
+* [x] Products have multiple colours.
+* [x] Some products have discounts.
+* [x] Some products are out of stock.
+* [x] Mock orders exist.
+* [x] All UI features can use this data.
+* [x] Product information is not unnecessarily hardcoded inside components.
 
 ---
 
