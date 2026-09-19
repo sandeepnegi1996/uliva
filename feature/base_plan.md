@@ -171,6 +171,8 @@ Build:
 
 # Phase 4 — Category Section
 
+Status: Completed
+
 Create reusable components:
 
 ```text
@@ -224,6 +226,8 @@ Categories:
 ---
 
 # Phase 5 — Product Grid
+
+Status: Completed
 
 Introduce reusable product UI, but still use static data.
 

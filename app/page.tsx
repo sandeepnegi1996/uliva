@@ -1,12 +1,74 @@
+import { CategorySection } from "./components/category-section";
+import { ProductSection } from "./components/product-section";
+
 const navItems = ["Women", "Men", "Kids", "Footwear", "Accessories", "Sale"];
 
 const brandLogos = ["Myntra", "amazon", "Flipkart", "AJIO"];
 
 const categories = [
-  { name: "Men's", tone: "from-stone-200 via-stone-100 to-stone-50" },
-  { name: "Women's", tone: "from-amber-200 via-orange-100 to-stone-50" },
-  { name: "Kids", tone: "from-sky-200 via-sky-100 to-stone-50" },
-  { name: "Footwear Accessories", tone: "from-emerald-200 via-emerald-100 to-stone-50" },
+  {
+    name: "Men's",
+    description: "Everyday pairs with room to move.",
+    image: "/category-men.svg",
+    tone: "from-stone-200 via-stone-100 to-stone-50",
+    accent: "text-[#f0c96b]",
+  },
+  {
+    name: "Women's",
+    description: "Soft steps for full days out.",
+    image: "/category-women.svg",
+    tone: "from-rose-200 via-orange-100 to-stone-50",
+    accent: "text-[#f0c96b]",
+  },
+  {
+    name: "Kids",
+    description: "Play-ready comfort that keeps up.",
+    image: "/category-kids.svg",
+    tone: "from-sky-200 via-sky-100 to-stone-50",
+    accent: "text-[#f0c96b]",
+  },
+  {
+    name: "Accessories",
+    description: "The finishing touches for easy days.",
+    image: "/category-accessories.svg",
+    tone: "from-emerald-200 via-emerald-100 to-stone-50",
+    accent: "text-[#f0c96b]",
+  },
+];
+
+const products = [
+  {
+    name: "Stride Flex",
+    category: "Everyday slip-ons",
+    image: "/category-men.svg",
+    price: 2499,
+    originalPrice: 3499,
+    badge: "Sale",
+  },
+  {
+    name: "Cloud Ease",
+    category: "Women's runners",
+    image: "/category-women.svg",
+    price: 2899,
+    originalPrice: 3899,
+    badge: "New",
+  },
+  {
+    name: "Bounce Kick",
+    category: "Kids sneakers",
+    image: "/category-kids.svg",
+    price: 1999,
+    originalPrice: 2799,
+    badge: "Hot",
+  },
+  {
+    name: "Carry Light",
+    category: "Travel essentials",
+    image: "/category-accessories.svg",
+    price: 899,
+    originalPrice: 1499,
+    badge: "Sale",
+  },
 ];
 
 function IconSearch() {
@@ -183,41 +245,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-[#f7f4ef] py-8 md:py-10">
-          <div className="mx-auto max-w-[1360px] px-4 md:px-6 lg:px-8">
-            <div className="mb-6 text-center">
-              <div className="inline-flex items-center gap-2 text-[#1d3a2d]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#6e9d50]" />
-                <span className="text-[0.7rem] font-bold uppercase tracking-[0.18em]">Shop by category</span>
-              </div>
-              <p className="mt-2 text-[0.75rem] font-medium uppercase tracking-[0.14em] text-[#53665c]">
-                Explore the perfect fit for every day
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {categories.map((category) => (
-                <article
-                  key={category.name}
-                  className={`group relative overflow-hidden rounded-[20px] border border-[#e8e2d6] bg-gradient-to-br ${category.tone} p-3 shadow-sm`}
-                >
-                  <div className="relative h-[220px] overflow-hidden rounded-[16px] bg-[#f1e5d7]">
-                    <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#112d2d]/65 via-[#112d2d]/10 to-transparent" />
-                    <div className="absolute inset-0 flex items-end justify-center pb-6">
-                      <div className="h-20 w-24 rounded-[28%_38%_40%_45%] bg-[#e9d1a8] shadow-[inset_0_0_0_6px_rgba(255,255,255,0.25)]" />
-                    </div>
-                    <div className="absolute left-1/2 top-1/2 h-14 w-12 -translate-x-1/2 -translate-y-1/2 rounded-[40%_35%_30%_30%] border-[6px] border-[#2f3a41] bg-[#101a21] shadow-[0_8px_0_rgba(17,26,31,0.35)]" />
-                  </div>
-                  <div className="absolute inset-x-0 bottom-0 p-4 text-left">
-                    <p className="text-[1.7rem] font-black uppercase leading-none tracking-[-0.06em] text-white drop-shadow-md">
-                      {category.name}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        <CategorySection categories={categories} />
+        <ProductSection products={products} />
       </main>
     </div>
   );

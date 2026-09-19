@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1248" height="416" viewBox="0 0 1248 416">
+<defs>
+<linearGradient id="scrim" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#12211c" stop-opacity=".5"/><stop offset=".5" stop-color="#12211c" stop-opacity=".12"/><stop offset="1" stop-color="#12211c" stop-opacity="0"/></linearGradient>
+<linearGradient id="mshoe" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#faf6f0"/><stop offset="1" stop-color="#c5a97f"/></linearGradient>
+<linearGradient id="wshoe" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bd3d48"/><stop offset="1" stop-color="#6b171f"/></linearGradient>
+<linearGradient id="kshoe" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36414f"/><stop offset="1" stop-color="#151c24"/></linearGradient>
+</defs>
+
+<g>
+  <rect width="312" height="416" fill="#e6d8c3"/>
+  <circle cx="150" cy="176" r="120" fill="#c9a475" opacity=".45"/>
+  <path d="M6 306 C56 258 100 318 152 268 C204 218 250 214 310 246" fill="none" stroke="#dff07c" stroke-opacity=".65" stroke-width="3"/>
+  <ellipse cx="156" cy="206" rx="74" ry="16" fill="#ffffff" opacity=".8"/>
+  <rect x="82" y="206" width="148" height="118" rx="10" fill="#ffffff" opacity=".42"/>
+  <g transform="translate(61,225) scale(0.94) translate(-8,-104)">
+    <path d="M12 80 a13 13 0 0 1 13 -13 h168 a13 13 0 0 1 13 13 a13 13 0 0 1 -13 13 h-168 a13 13 0 0 1 -13 -13 z" fill="url(#mshoe)" stroke="#8f7351" stroke-opacity=".32" stroke-width="2"/>
+    <path d="M18 80 C14 62 16 42 26 30 C36 18 56 16 72 22 C88 28 104 40 122 50 C142 62 170 72 198 76 L200 80 Z" fill="url(#mshoe)" stroke="#8f7351" stroke-opacity=".32" stroke-width="2"/>
+    <path d="M32 30 C44 20 60 18 74 24 C78 28 74 34 68 34 C54 30 42 32 36 38 Z" fill="#4a3a28" opacity=".5"/>
+    <path d="M78 26 L66 42" stroke="#ffffff" stroke-opacity=".85" stroke-width="4" stroke-linecap="round"/>
+    <path d="M100 38 L88 54" stroke="#ffffff" stroke-opacity=".85" stroke-width="4" stroke-linecap="round"/>
+    <path d="M122 50 L110 66" stroke="#ffffff" stroke-opacity=".85" stroke-width="4" stroke-linecap="round"/>
+    <path d="M160 60 C176 68 192 74 200 76 L200 80 L146 80 C146 72 150 64 160 60 Z" fill="#ffffff" opacity=".3"/>
+    <path d="M25 80 h166" stroke="#ffffff" stroke-opacity=".5" stroke-width="3"/>
+  </g>
+  <rect y="272" width="312" height="144" fill="url(#scrim)"/>
+  <text x="26" y="378" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="900" fill="#ffffff">MEN'S</text>
+</g>
+
+<g transform="translate(312,0)">
+  <rect width="312" height="416" fill="#ecc7ce"/>
+  <circle cx="162" cy="172" r="118" fill="#d3909c" opacity=".42"/>
+  <path d="M2 296 C54 252 96 306 150 262 C204 218 252 216 308 250" fill="none" stroke="#dff07c" stroke-opacity=".65" stroke-width="3"/>
+  <ellipse cx="156" cy="202" rx="76" ry="16" fill="#ffffff" opacity=".8"/>
+  <rect x="80" y="202" width="152" height="122" rx="10" fill="#ffffff" opacity=".42"/>
+  <g transform="translate(50,226) scale(0.96) translate(-8,-96)">
+    <path d="M8 74 a11 11 0 0 1 11 -11 h198 a11 11 0 0 1 11 11 a11 11 0 0 1 -11 11 h-198 a11 11 0 0 1 -11 -11 z" fill="url(#wshoe)"/>
+    <path d="M22 74 C18 48 34 32 58 28 C82 24 106 32 122 46 C140 60 164 68 190 70 C204 71 216 73 222 74 Z" fill="url(#wshoe)"/>
+    <path d="M52 46 C68 34 96 34 112 44 C118 50 112 58 100 56 C84 54 70 56 62 62 Z" fill="#54101a" opacity=".85"/>
+    <circle cx="58" cy="44" r="7" fill="#ffffff" opacity=".5"/>
+    <path d="M170 62 C186 66 206 70 222 74 L222 74 L150 74 C152 66 160 60 170 62 Z" fill="#ffffff" opacity=".28"/>
+    <path d="M21 74 h204" stroke="#ffffff" stroke-opacity=".45" stroke-width="3"/>
+  </g>
+  <rect y="272" width="312" height="144" fill="url(#scrim)"/>
+  <text x="26" y="378" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="900" fill="#ffffff">WOMEN'S</text>
+</g>
+
+<g transform="translate(624,0)">
+  <rect width="312" height="416" fill="#c9e1f0"/>
+  <circle cx="146" cy="176" r="120" fill="#8ab9d9" opacity=".42"/>
+  <path d="M8 300 C60 254 100 310 154 266 C208 222 252 218 306 252" fill="none" stroke="#dff07c" stroke-opacity=".65" stroke-width="3"/>
+  <ellipse cx="156" cy="208" rx="80" ry="16" fill="#ffffff" opacity=".8"/>
+  <rect x="76" y="208" width="160" height="116" rx="10" fill="#ffffff" opacity=".42"/>
+  <g transform="translate(54,224) scale(0.82) translate(-6,-88)">
+    <path d="M6 66 a11 11 0 0 1 11 -11 h124 a11 11 0 0 1 11 11 a11 11 0 0 1 -11 11 h-124 a11 11 0 0 1 -11 -11 z" fill="url(#kshoe)"/>
+    <path d="M14 66 C12 48 18 32 28 26 C40 18 54 20 64 28 C74 36 86 46 100 54 C112 60 126 64 132 66 Z" fill="url(#kshoe)"/>
+    <path d="M62 30 L118 62 L112 66 L56 34 Z" fill="#e0574f"/>
+    <path d="M18 66 h128" stroke="#ffffff" stroke-opacity=".45" stroke-width="3"/>
+    <g transform="translate(160,-10)">
+      <path d="M14 74 C0 74 -2 56 4 36 C10 16 24 2 44 0 C68 -2 88 12 94 32 C100 52 96 70 84 74 Z" fill="#4fa3d8"/>
+      <circle cx="36" cy="36" r="6" fill="#ffffff" opacity=".6"/>
+      <circle cx="58" cy="30" r="6" fill="#ffffff" opacity=".6"/>
+      <circle cx="54" cy="54" r="6" fill="#ffffff" opacity=".6"/>
+      <path d="M8 74 h84" stroke="#ffffff" stroke-opacity=".4" stroke-width="3"/>
+    </g>
+  </g>
+  <rect y="272" width="312" height="144" fill="url(#scrim)"/>
+  <text x="26" y="378" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="900" fill="#ffffff">KIDS</text>
+</g>
+
+<g transform="translate(936,0)">
+  <rect width="312" height="416" fill="#eddbc3"/>
+  <circle cx="156" cy="176" r="118" fill="#c89b6c" opacity=".42"/>
+  <path d="M4 302 C56 256 98 312 152 268 C206 224 252 220 308 252" fill="none" stroke="#dff07c" stroke-opacity=".65" stroke-width="3"/>
+  <ellipse cx="156" cy="212" rx="86" ry="17" fill="#ffffff" opacity=".8"/>
+  <rect x="70" y="212" width="172" height="112" rx="10" fill="#ffffff" opacity=".42"/>
+  <g transform="translate(36,80)">
+    <path d="M40 42 C28 66 26 100 34 126 C44 132 62 132 72 126 C80 100 78 66 68 42 Z" fill="#1f7ac0" stroke="#ffffff" stroke-opacity=".75" stroke-width="3"/>
+    <path d="M44 66 h24 M44 84 h24 M44 102 h24" stroke="#ffffff" stroke-opacity=".45" stroke-width="5"/>
+    <path d="M206 44 C218 68 220 102 212 128 C202 134 186 134 176 128 C168 102 170 68 180 44 Z" fill="#7b3fb0" stroke="#ffffff" stroke-opacity=".75" stroke-width="3"/>
+    <path d="M202 68 h-24 M202 86 h-24 M202 104 h-24" stroke="#ffffff" stroke-opacity=".45" stroke-width="5"/>
+    <rect x="108" y="0" width="78" height="146" rx="12" fill="#3f7d3f"/>
+    <rect x="118" y="18" width="58" height="92" rx="8" fill="#ffffff" opacity=".88"/>
+  </g>
+  <rect y="272" width="312" height="144" fill="url(#scrim)"/>
+  <text x="26" y="352" font-family="Arial, Helvetica, sans-serif" font-size="33" font-weight="900" fill="#ffffff">FOOTWEAR</text>
+  <text x="26" y="384" font-family="Arial, Helvetica, sans-serif" font-size="33" font-weight="900" fill="#ffffff">ACCESSORIES</text>
+</g>
+</svg>
