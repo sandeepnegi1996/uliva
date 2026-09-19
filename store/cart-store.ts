@@ -4,6 +4,8 @@ import { persist } from "zustand/middleware";
 import type { CartLineItem, CartState } from "../types/cart";
 
 interface CartStore extends CartState {
+  hasHydrated: boolean;
+  setHasHydrated: (value: boolean) => void;
   addItem: (item: CartLineItem) => void;
   removeItem: (id: string) => void;
   updateQuantity: (id: string, delta: number) => void;
@@ -16,6 +18,8 @@ export const useCartStore = create<CartStore>()(
       items: [],
       subtotal: 0,
       itemCount: 0,
+      hasHydrated: false,
+      setHasHydrated: (value) => set({ hasHydrated: value }),
       addItem: (item) => {
         const existingItem = get().items.find(
           (current) =>
@@ -67,6 +71,7 @@ export const useCartStore = create<CartStore>()(
     }),
     {
       name: "uliva-cart-storage",
+      onRehydrateStorage: (state) => () => state.setHasHydrated(true),
     },
   ),
 );

@@ -20,31 +20,28 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## One task at a time
 
 - Address only the exact request in front of you.
-- Do not start multiple phases, features, or refactors in a single pass.
-- If the user asks for a phase, implement only that phase unless explicitly instructed otherwise.
-- Do not add future-proofing or speculative architecture unless it is required by the task.
+- Implement only the phase the user asks for unless explicitly instructed otherwise.
+- Do not add future-proofing or speculative architecture unless required.
 
 ## Read first, then edit
 
-- Inspect the relevant files before changing code.
-- Limit changes to the files required to solve the current problem.
-- Preserve the existing project structure, style, and conventions.
-- Avoid rewriting whole files when a small, exact patch is enough.
+- Inspect relevant files before changing code.
+- Preserve existing project structure, style, and conventions.
+- Patch, don't rewrite — a small exact patch is better than a full file rewrite.
 
 ## Validate the smallest relevant proof
 
-- After changes, run the smallest verification command that checks the actual behavior.
-- Prefer targeted validation over broad, noisy checks.
-- If a build or lint check is relevant, run it; otherwise do not add unnecessary validation steps.
+- Run the smallest verification command that checks actual behavior.
+- Prefer targeted validation over broad checks.
+- Run build or lint only when relevant.
 
 ## Refactor policy
 
-- Do not perform cleanup, formatting-only changes, or rename-driven refactors unless required.
+- No cleanup, formatting-only changes, or rename-driven refactors unless required.
 - No unrelated file edits, no cosmetic churn, no speculative improvements.
-- Leave adjacent code untouched when it is not part of the current fix.
+- Leave adjacent code untouched when not part of the current fix.
 
 ## Acceptance standard
 
-- The final result should match the request closely and remain easy to review.
-- Changes should be easy to diff, easy to explain, and easy to validate.
-- If more than one logical change is needed, split them into separate steps instead of shipping them together.
+- Match the request closely; remain easy to review, diff, and validate.
+- Split multiple logical changes into separate steps.
