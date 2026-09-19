@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { categories } from "../../data/categories";
 import { products as productData } from "../../data/products";
@@ -51,13 +52,17 @@ export default function Home() {
 
             <div className="relative flex items-center justify-center lg:justify-end">
               <div className="hero-shoe-wrap relative h-[300px] w-full max-w-[560px] sm:h-[360px] lg:h-[420px]">
+                <div className="absolute inset-0 overflow-hidden rounded-[32px] bg-[#f4ece0]">
+                  <Image
+                    src="/close-up-futuristic-sneakers.jpg"
+                    alt="Futuristic running sneaker"
+                    fill
+                    priority
+                    sizes="(min-width: 768px) 560px, 100vw"
+                    className="object-cover"
+                  />
+                </div>
                 <div className="hero-shadow" />
-                <div className="hero-sole" />
-                <div className="hero-shoe-top" />
-                <div className="hero-shoe-heel" />
-                <div className="hero-shoe-detail" />
-                <div className="hero-shoe-buckle" />
-                <div className="hero-shoe-lace" />
               </div>
             </div>
           </div>

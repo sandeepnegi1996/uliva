@@ -13,7 +13,7 @@ export const categories: Category[] = [
   {
     name: "Men's",
     description: "Everyday pairs with room to move.",
-    image: "/category-men.svg",
+    image: "/Deviate-NITRO™-Elite-3-PROTO-Men's-Running-Shoes.jpg",
     tone: "from-stone-200 via-stone-100 to-stone-50",
     accent: "text-[#f0c96b]",
     gender: "Men",
@@ -21,7 +21,7 @@ export const categories: Category[] = [
   {
     name: "Women's",
     description: "Soft steps for full days out.",
-    image: "/category-women.svg",
+    image: "/close-up-futuristic-sneakers.jpg",
     tone: "from-rose-200 via-orange-100 to-stone-50",
     accent: "text-[#f0c96b]",
     gender: "Women",
@@ -29,7 +29,7 @@ export const categories: Category[] = [
   {
     name: "Kids",
     description: "Play-ready comfort that keeps up.",
-    image: "/category-kids.svg",
+    image: "/one-black-sneaker-shoe-isolated-white.jpg",
     tone: "from-sky-200 via-sky-100 to-stone-50",
     accent: "text-[#f0c96b]",
     gender: "Kids",
@@ -37,7 +37,7 @@ export const categories: Category[] = [
   {
     name: "Accessories",
     description: "The finishing touches for easy days.",
-    image: "/category-accessories.svg",
+    image: "/close-up-futuristic-sneakers.jpg",
     tone: "from-emerald-200 via-emerald-100 to-stone-50",
     accent: "text-[#f0c96b]",
     gender: "Unisex",
