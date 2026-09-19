@@ -36,7 +36,7 @@ function FilterChip({ active, onClick, children }: { active: boolean; onClick: (
       className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition ${
         active
           ? "border-[#1f3855] bg-[#1f3855] text-white"
-          : "border-stone-300 bg-white text-[#3f514a] hover:border-stone-400 hover:bg-stone-50"
+          : "border-stone-300 bg-white text-[#3f514a] hover:border-stone-400 hover:bg-stone-50 dark:border-stone-600 dark:bg-[#222a24] dark:text-[#8a9a94] dark:hover:bg-stone-800"
       }`}
     >
       {children}
@@ -46,8 +46,8 @@ function FilterChip({ active, onClick, children }: { active: boolean; onClick: (
 
 function FilterGroup({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <fieldset className="border-t border-stone-200 pt-4 first:border-t-0 first:pt-0">
-      <legend className="mb-2.5 text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#153d30]">{title}</legend>
+    <fieldset className="border-t border-stone-200 pt-4 first:border-t-0 first:pt-0 dark:border-stone-700">
+      <legend className="mb-2.5 text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#153d30] dark:text-[#c4e0a8]">{title}</legend>
       <div className="flex flex-wrap gap-2">{children}</div>
     </fieldset>
   );
@@ -122,20 +122,20 @@ export function ProductBrowser() {
   return (
     <section className="mx-auto w-full max-w-[1360px] px-4 py-10 md:px-6 lg:px-8">
       <header className="mb-6">
-        <div className="inline-flex items-center gap-2 text-[#1d3a2d]">
+        <div className="inline-flex items-center gap-2 text-[#1d3a2d] dark:text-[#c4e0a8]">
           <span className="h-1.5 w-1.5 rounded-full bg-[#6e9d50]" />
           <h1 className="text-[0.8rem] font-black uppercase tracking-[0.22em]">{title}</h1>
           <span className="h-1.5 w-1.5 rounded-full bg-[#6e9d50]" />
         </div>
         <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
-          <p className="text-sm font-medium uppercase tracking-[0.14em] text-[#53665c]">
+          <p className="text-sm font-medium uppercase tracking-[0.14em] text-[#53665c] dark:text-[#8a9a94]">
             {filtered.length} {filtered.length === 1 ? "product" : "products"}
           </p>
           {hasSearch || hasActiveFilters ? (
             <button
               type="button"
               onClick={clearAll}
-              className="text-xs font-bold uppercase tracking-[0.14em] text-[#1f3855] transition hover:text-[#132b45] hover:underline"
+              className="text-xs font-bold uppercase tracking-[0.14em] text-[#1f3855] transition hover:text-[#132b45] hover:underline dark:text-[#90c86a]"
             >
               Clear all
             </button>
@@ -158,7 +158,7 @@ export function ProductBrowser() {
               type="button"
               onClick={() => setFiltersOpen((open) => !open)}
               aria-expanded={filtersOpen}
-              className="inline-flex items-center gap-2 rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-xs font-black uppercase tracking-[0.14em] text-[#1f3855] transition hover:border-stone-400"
+              className="inline-flex items-center gap-2 rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-xs font-black uppercase tracking-[0.14em] text-[#1f3855] transition hover:border-stone-400 dark:border-stone-600 dark:bg-[#222a24] dark:text-[#c4e0a8]"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true" className="size-4">
                 <path
@@ -179,7 +179,7 @@ export function ProductBrowser() {
           </div>
 
           <div className={filtersOpen ? "block" : "hidden lg:block"}>
-            <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-[0_10px_20px_rgba(22,31,29,0.04)]">
+            <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-[0_10px_20px_rgba(22,31,29,0.04)] dark:border-stone-700 dark:bg-[#222a24]">
               <div className="flex flex-col gap-5">
                 <FilterGroup title="Category">
                   {CATEGORY_OPTIONS.map((option) => {

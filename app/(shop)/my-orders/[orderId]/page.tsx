@@ -32,10 +32,10 @@ export default async function OrderDetailsPage({ params }: { params: Promise<{ o
       </Link>
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
-        <h1 className="text-3xl font-black uppercase tracking-[-0.05em] text-[#153d30]">{order.id}</h1>
+        <h1 className="text-3xl font-black uppercase tracking-[-0.05em] text-[#153d30] dark:text-[#c4e0a8]">{order.id}</h1>
         <Badge variant={statusVariant[order.status] ?? "neutral"}>{order.status}</Badge>
       </div>
-      <p className="mt-2 text-sm font-medium text-[#6a7a74]">
+      <p className="mt-2 text-sm font-medium text-[#6a7a74] dark:text-[#8a9a94]">
         Placed on{" "}
         {new Date(order.createdAt).toLocaleDateString("en-IN", {
           day: "numeric",
@@ -48,33 +48,33 @@ export default async function OrderDetailsPage({ params }: { params: Promise<{ o
       <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_300px]">
         <ul className="space-y-3">
           {order.items.map((item) => (
-            <li key={`${item.productId}-${item.size}-${item.color}`} className="flex items-center justify-between gap-4 rounded-2xl border border-[#e8e2d6] bg-white p-4">
+            <li key={`${item.productId}-${item.size}-${item.color}`} className="flex items-center justify-between gap-4 rounded-2xl border border-[#e8e2d6] bg-white p-4 dark:border-stone-700 dark:bg-[#222a24]">
               <div>
-                <p className="text-sm font-black uppercase tracking-[-0.02em] text-[#153d30]">{item.productName}</p>
-                <p className="mt-1 text-xs font-medium text-[#6a7a74]">
+                <p className="text-sm font-black uppercase tracking-[-0.02em] text-[#153d30] dark:text-[#c4e0a8]">{item.productName}</p>
+                <p className="mt-1 text-xs font-medium text-[#6a7a74] dark:text-[#8a9a94]">
                   Size {item.size} · {item.color} · Qty {item.quantity}
                 </p>
               </div>
-              <p className="text-sm font-black text-[#153d30]">{formatPrice(item.price * item.quantity)}</p>
+              <p className="text-sm font-black text-[#153d30] dark:text-[#c4e0a8]">{formatPrice(item.price * item.quantity)}</p>
             </li>
           ))}
         </ul>
 
-        <aside className="h-fit rounded-2xl border border-[#e8e2d6] bg-white p-5">
-          <p className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#5d6c67]">Order total</p>
-          <p className="mt-1 text-2xl font-black text-[#153d30]">{formatPrice(order.total)}</p>
-          <p className="mt-4 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#5d6c67]">Status</p>
-          <p className="mt-1 text-sm font-bold text-[#1a2d2e]">
+        <aside className="h-fit rounded-2xl border border-[#e8e2d6] bg-white p-5 dark:border-stone-700 dark:bg-[#222a24]">
+          <p className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#5d6c67] dark:text-[#8a9a94]">Order total</p>
+          <p className="mt-1 text-2xl font-black text-[#153d30] dark:text-[#c4e0a8]">{formatPrice(order.total)}</p>
+          <p className="mt-4 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#5d6c67] dark:text-[#8a9a94]">Status</p>
+          <p className="mt-1 text-sm font-bold text-[#1a2d2e] dark:text-[#c4e0a8]">
             {order.status === "Cancelled"
               ? "This order was cancelled."
               : `Your order is ${order.status.toLowerCase()}.`}
           </p>
-          <p className="mt-4 text-xs font-medium leading-relaxed text-[#6a7a74]">
+          <p className="mt-4 text-xs font-medium leading-relaxed text-[#6a7a74] dark:text-[#8a9a94]">
             Full order tracking timeline and cancellation details arrive in Phase 18.
           </p>
           <Link
             href="/products"
-            className="mt-5 block w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-center text-xs font-black uppercase tracking-[0.14em] text-[#1f3855] transition hover:bg-stone-50"
+            className="mt-5 block w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-center text-xs font-black uppercase tracking-[0.14em] text-[#1f3855] transition hover:bg-stone-50 dark:border-stone-600 dark:bg-[#222a24] dark:text-[#c4e0a8]"
           >
             Continue shopping
           </Link>

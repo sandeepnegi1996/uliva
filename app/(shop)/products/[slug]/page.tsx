@@ -16,13 +16,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     <section className="mx-auto w-full max-w-[1360px] px-4 py-8 md:px-6 lg:px-8">
       <Link
         href="/products"
-        className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#2f7d3c] transition hover:text-[#1a2d2e]"
+        className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#2f7d3c] transition hover:text-[#1a2d2e] dark:hover:text-[#90c86a]"
       >
         <span aria-hidden="true">&larr;</span> Back to products
       </Link>
 
       <div className="mt-6 grid gap-8 lg:grid-cols-2">
-        <div className="relative aspect-square overflow-hidden rounded-[24px] border border-[#efe8dc] bg-[#f5f0ea]">
+        <div className="relative aspect-square overflow-hidden rounded-[24px] border border-[#efe8dc] bg-[#f5f0ea] dark:border-stone-700 dark:bg-[#1e2520]">
           <Image
             src={product.images[0]}
             alt={`${product.name} product`}
@@ -34,8 +34,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
 
         <div>
-          <p className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#5d6c67]">{product.category}</p>
-          <h1 className="mt-2 text-4xl font-black uppercase leading-[0.95] tracking-[-0.06em] text-[#153d30]">
+          <p className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#5d6c67] dark:text-[#8a9a94]">{product.category}</p>
+          <h1 className="mt-2 text-4xl font-black uppercase leading-[0.95] tracking-[-0.06em] text-[#153d30] dark:text-[#c4e0a8] font-display">
             {product.name}
           </h1>
 
@@ -52,13 +52,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </Badge>
           </div>
 
-          <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#53665c]">{product.description}</p>
+          <p className="mt-5 max-w-prose text-sm leading-relaxed text-[#53665c] dark:text-[#8a9a94]">{product.description}</p>
 
           <div className="mt-6">
-            <p className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#5d6c67]">Colours</p>
+            <p className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#5d6c67] dark:text-[#8a9a94]">Colours</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {product.colors.map((color) => (
-                <span key={color} className="rounded-full border border-stone-300 bg-white px-3 py-1.5 text-xs font-medium text-[#1a2d2e]">
+                <span key={color} className="rounded-full border border-stone-300 bg-white px-3 py-1.5 text-xs font-medium text-[#1a2d2e] dark:border-stone-600 dark:bg-[#222a24] dark:text-[#e8ede8]">
                   {color}
                 </span>
               ))}
@@ -66,19 +66,19 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
 
           <div className="mt-4">
-            <p className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#5d6c67]">Sizes</p>
+            <p className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#5d6c67] dark:text-[#8a9a94]">Sizes</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {product.sizes.map((size) => (
-                <span key={size} className="rounded-lg border border-stone-300 bg-white px-3 py-1.5 text-xs font-bold text-[#1a2d2e]">
+                <span key={size} className="rounded-lg border border-stone-300 bg-white px-3 py-1.5 text-xs font-bold text-[#1a2d2e] dark:border-stone-600 dark:bg-[#222a24] dark:text-[#e8ede8]">
                   {size}
                 </span>
               ))}
             </div>
           </div>
 
-          <div className="mt-8 rounded-xl border border-[#e8e2d6] bg-[#f0efe9] px-4 py-3 text-xs font-medium text-[#53665c]">
+          <div className="mt-8 rounded-xl border border-[#e8e2d6] bg-[#f0efe9] px-4 py-3 text-xs font-medium text-[#53665c] dark:border-stone-700 dark:bg-[#1e2520] dark:text-[#8a9a94]">
             Size & colour selection and Add to Cart arrive in Phase 7.
-            <Link href="/products" className="ml-1 font-bold text-[#2f7d3c] underline-offset-2 hover:underline">
+            <Link href="/products" className="ml-1 font-bold text-[#2f7d3c] dark:text-[#90c86a] underline-offset-2 hover:underline">
               Explore products
             </Link>
           </div>
@@ -86,7 +86,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <button
             type="button"
             disabled
-            className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-[#1f3855] px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-white opacity-60 disabled:cursor-not-allowed sm:w-auto"
+            className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-[#1f3855] px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-white opacity-60 disabled:cursor-not-allowed sm:w-auto dark:bg-[#3a5a4a]"
           >
             Add to Cart
           </button>

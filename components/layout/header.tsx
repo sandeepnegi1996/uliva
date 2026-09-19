@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useCartStore } from "../../store/cart-store";
+import { ThemeToggle } from "../common/ThemeToggle";
 
 type NavItem = {
   label: string;
@@ -82,19 +83,19 @@ export function Header() {
         </div>
       </div>
 
-      <header className="sticky top-0 z-40 border-b border-stone-200 bg-white/95 backdrop-blur-sm">
+      <header className="sticky top-0 z-40 border-b border-stone-200 bg-white/80 backdrop-blur-lg dark:border-stone-700 dark:bg-[#1a1f1a]/80">
         <div className="mx-auto flex max-w-[1360px] items-center justify-between gap-4 px-4 py-3 md:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-3" aria-label="Uliva home">
-            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#153d30] to-[#2f7d3c] text-2xl font-black italic text-[#d9f39b] shadow-inner shadow-white/20">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#153d30] to-[#2f7d3c] text-3xl font-black italic text-[#d9f39b] shadow-inner shadow-white/20 ring-2 ring-[#90c86a]/30">
               U
             </div>
             <div className="leading-none">
-              <div className="text-2xl font-black uppercase tracking-[0.1em] text-[#163d34]">Uliva</div>
-              <div className="mt-0.5 text-[7px] font-bold uppercase tracking-[0.32em] text-[#899a88]">Comfort</div>
+              <div className="text-3xl font-black uppercase tracking-[0.05em] text-[#163d34] dark:text-[#c4e0a8] font-display">Uliva</div>
+              <div className="mt-0.5 text-[8px] font-bold uppercase tracking-[0.32em] text-[#899a88] dark:text-[#6a7a74]">Comfort footwear</div>
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-7 text-[11px] font-medium uppercase tracking-[0.16em] text-[#1a2d2e] md:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-7 text-[11px] font-medium uppercase tracking-[0.16em] text-[#1a2d2e] dark:text-[#8a9a94] dark:hover:text-[#90c86a] md:flex" aria-label="Primary">
             {NAV_ITEMS.map((item) => {
               const active = isActive(item);
               return (
@@ -115,17 +116,18 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3 text-[#173f35]">
+            <ThemeToggle />
             <Link
               href="/products"
               aria-label="Search products"
-              className="rounded-full border border-stone-200 p-2 transition hover:border-stone-300 hover:bg-stone-100"
+              className="rounded-full border border-stone-200 p-2 transition hover:border-stone-300 hover:bg-stone-100 dark:border-stone-700 dark:hover:bg-stone-800"
             >
               <IconSearch />
             </Link>
             <Link
               href="/cart"
               aria-label={`Cart, ${visibleCount} ${visibleCount === 1 ? "item" : "items"}`}
-              className="relative rounded-full border border-stone-200 p-2 transition hover:border-stone-300 hover:bg-stone-100"
+              className="relative rounded-full border border-stone-200 p-2 transition hover:border-stone-300 hover:bg-stone-100 dark:border-stone-700 dark:hover:bg-stone-800"
             >
               <IconCart />
               {visibleCount > 0 ? (
@@ -148,33 +150,33 @@ export function Header() {
         </div>
 
         {menuOpen ? (
-          <div id="mobile-menu" className="border-t border-stone-200 bg-white md:hidden">
-            <div className="mx-auto flex max-w-[1360px] flex-col gap-1 px-4 py-4">
-              {NAV_ITEMS.map((item) => {
-                const active = isActive(item);
-                return (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    onClick={() => setMenuOpen(false)}
-                    aria-current={active ? "page" : undefined}
-                    className={`rounded-lg px-3 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition ${
-                      active ? "bg-[#f0c96b] text-[#153d30]" : "text-[#1a2d2e] hover:bg-stone-100"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-              <Link
-                href="/my-orders"
-                onClick={() => setMenuOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-[#1a2d2e] transition hover:bg-stone-100"
-              >
-                My Orders
-              </Link>
-            </div>
-          </div>
+<div id="mobile-menu" className="border-t border-stone-200 bg-white dark:border-stone-700 dark:bg-[#1e2520] md:hidden">
+             <div className="mx-auto flex max-w-[1360px] flex-col gap-1 px-4 py-4">
+               {NAV_ITEMS.map((item) => {
+                 const active = isActive(item);
+                 return (
+                   <Link
+                     key={item.label}
+                     href={item.href}
+                     onClick={() => setMenuOpen(false)}
+                     aria-current={active ? "page" : undefined}
+                     className={`rounded-lg px-3 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition ${
+                       active ? "bg-[#f0c96b] text-[#153d30]" : "text-[#1a2d2e] hover:bg-stone-100 dark:text-[#8a9a94] dark:hover:bg-stone-800"
+                     }`}
+                   >
+                     {item.label}
+                   </Link>
+                 );
+               })}
+               <Link
+                 href="/my-orders"
+                 onClick={() => setMenuOpen(false)}
+                 className="rounded-lg px-3 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-[#1a2d2e] transition hover:bg-stone-100 dark:text-[#8a9a94] dark:hover:bg-stone-800"
+               >
+                 My Orders
+               </Link>
+             </div>
+           </div>
         ) : null}
       </header>
     </>

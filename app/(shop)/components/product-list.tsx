@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { ProductCard } from "../../../components/common/ProductCard";
 import { ProductGrid } from "../../../components/common/ProductGrid";
 import { useCartStore } from "../../../store/cart-store";
@@ -11,6 +12,19 @@ export interface ProductListProps {
 
 export function ProductList({ products }: ProductListProps) {
   const addItem = useCartStore((s) => s.addItem);
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.1 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const handleAddToCart = (product: Product) => {
     addItem({
@@ -26,9 +40,15 @@ export function ProductList({ products }: ProductListProps) {
   };
 
   return (
-    <ProductGrid>
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} onAddToCart={() => handleAddToCart(product)} />
+    <ProductGrid ref={ref}>
+      {products.map((product, i) => (
+        <div
+          key={product.id}
+          className={`transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+          style={{ transitionDelay: `${i * 80}ms` }}
+        >
+          <ProductCard product={product} onAddToCart={() => handleAddToCart(product)} />
+        </div>
       ))}
     </ProductGrid>
   );
