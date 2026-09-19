@@ -5,6 +5,8 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useCartStore } from "../../store/cart-store";
 import { ThemeToggle } from "../common/ThemeToggle";
+import { CartSidebar } from "../common/CartSidebar";
+import { useHoverSound } from "../common/useHoverSound";
 
 type NavItem = {
   label: string;
@@ -61,7 +63,10 @@ export function Header() {
 
   const itemCount = useCartStore((s) => s.itemCount);
   const hasHydrated = useCartStore((s) => s.hasHydrated);
+  const isCartOpen = useCartStore((s) => s.isCartOpen);
+  const setIsCartOpen = useCartStore((s) => s.setIsCartOpen);
   const [menuOpen, setMenuOpen] = useState(false);
+  const playHoverSound = useHoverSound();
 
   const visibleCount = hasHydrated ? itemCount : 0;
 
@@ -103,6 +108,7 @@ export function Header() {
                   key={item.label}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
+                  onMouseEnter={() => playHoverSound(720, 0.06, 0.04)}
                   className={`relative transition ${
                     active
                       ? "text-[#2f7d3c] after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-[#2f7d3c]"
@@ -120,22 +126,27 @@ export function Header() {
             <Link
               href="/products"
               aria-label="Search products"
+              onMouseEnter={() => playHoverSound(640, 0.05, 0.03)}
               className="rounded-full border border-stone-200 p-2 transition hover:border-stone-300 hover:bg-stone-100 dark:border-stone-700 dark:hover:bg-stone-800"
             >
               <IconSearch />
             </Link>
-            <Link
-              href="/cart"
+            <button
+              type="button"
+              onClick={() => setIsCartOpen(true)}
+              onMouseEnter={() => playHoverSound(640, 0.05, 0.03)}
               aria-label={`Cart, ${visibleCount} ${visibleCount === 1 ? "item" : "items"}`}
               className="relative rounded-full border border-stone-200 p-2 transition hover:border-stone-300 hover:bg-stone-100 dark:border-stone-700 dark:hover:bg-stone-800"
             >
               <IconCart />
-              {visibleCount > 0 ? (
-                <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#90c86a] px-1 text-[9px] font-bold text-[#123423]">
-                  {visibleCount}
-                </span>
-              ) : null}
-            </Link>
+              <span
+                className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#90c86a] px-1 text-[9px] font-bold text-[#123423]"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                {visibleCount}
+              </span>
+            </button>
             <button
               type="button"
               onClick={() => setMenuOpen((open) => !open)}
@@ -150,33 +161,33 @@ export function Header() {
         </div>
 
         {menuOpen ? (
-<div id="mobile-menu" className="border-t border-stone-200 bg-white dark:border-stone-700 dark:bg-[#1e2520] md:hidden">
-             <div className="mx-auto flex max-w-[1360px] flex-col gap-1 px-4 py-4">
-               {NAV_ITEMS.map((item) => {
-                 const active = isActive(item);
-                 return (
-                   <Link
-                     key={item.label}
-                     href={item.href}
-                     onClick={() => setMenuOpen(false)}
-                     aria-current={active ? "page" : undefined}
-                     className={`rounded-lg px-3 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition ${
-                       active ? "bg-[#f0c96b] text-[#153d30]" : "text-[#1a2d2e] hover:bg-stone-100 dark:text-[#8a9a94] dark:hover:bg-stone-800"
-                     }`}
-                   >
-                     {item.label}
-                   </Link>
-                 );
-               })}
-               <Link
-                 href="/my-orders"
-                 onClick={() => setMenuOpen(false)}
-                 className="rounded-lg px-3 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-[#1a2d2e] transition hover:bg-stone-100 dark:text-[#8a9a94] dark:hover:bg-stone-800"
-               >
-                 My Orders
-               </Link>
-             </div>
-           </div>
+          <div id="mobile-menu" className="border-t border-stone-200 bg-white dark:border-stone-700 dark:bg-[#1e2520] md:hidden">
+            <div className="mx-auto flex max-w-[1360px] flex-col gap-1 px-4 py-4">
+              {NAV_ITEMS.map((item) => {
+                const active = isActive(item);
+                return (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    aria-current={active ? "page" : undefined}
+                    className={`rounded-lg px-3 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition ${
+                      active ? "bg-[#f0c96b] text-[#153d30]" : "text-[#1a2d2e] hover:bg-stone-100 dark:text-[#8a9a94] dark:hover:bg-stone-800"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+              <Link
+                href="/my-orders"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-lg px-3 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-[#1a2d2e] transition hover:bg-stone-100 dark:text-[#8a9a94] dark:hover:bg-stone-800"
+              >
+                My Orders
+              </Link>
+            </div>
+          </div>
         ) : null}
       </header>
     </>

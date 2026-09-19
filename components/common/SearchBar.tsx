@@ -54,7 +54,7 @@ export function SearchBar({ value, onChange, onSearch, placeholder = "Search pro
           type="button"
           onClick={handleClear}
           aria-label="Clear search"
-          className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full p-1 text-slate-400 transition-all duration-200 hover:text-slate-700 hover:scale-110 hover:bg-stone-100 dark:hover:bg-stone-800"
+          className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full p-1 text-slate-400 transition-all duration-200 hover:text-slate-700 hover:scale-110 hover:bg-stone-100 dark:hover:bg-stone-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f3855] focus-visible:ring-2"
         >
           <svg viewBox="0 0 24 24" aria-hidden="true" className="size-4">
             <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />

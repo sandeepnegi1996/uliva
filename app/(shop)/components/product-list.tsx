@@ -60,6 +60,9 @@ export function ProductList({ products }: ProductListProps) {
         ))}
       </ProductGrid>
       {sparkleActive && <SparkleEffect count={12} active={sparkleActive} />}
+      <div aria-live="polite" className="sr-only" role="status">
+        {`${products.length} products displayed`}
+      </div>
     </>
   );
 }

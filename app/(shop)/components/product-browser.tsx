@@ -33,7 +33,7 @@ function FilterChip({ active, onClick, children }: { active: boolean; onClick: (
       type="button"
       aria-pressed={active}
       onClick={onClick}
-      className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition ${
+      className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f3855] focus-visible:ring-2 ${
         active
           ? "border-[#1f3855] bg-[#1f3855] text-white"
           : "border-stone-300 bg-white text-[#3f514a] hover:border-stone-400 hover:bg-stone-50 dark:border-stone-600 dark:bg-[#222a24] dark:text-[#8a9a94] dark:hover:bg-stone-800"
@@ -128,7 +128,7 @@ export function ProductBrowser() {
           <span className="h-1.5 w-1.5 rounded-full bg-[#6e9d50]" />
         </div>
         <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
-          <p className="text-sm font-medium uppercase tracking-[0.14em] text-[#53665c] dark:text-[#8a9a94]">
+          <p className="text-sm font-medium uppercase tracking-[0.14em] text-[#53665c] dark:text-[#8a9a94]" aria-live="polite" aria-atomic="true">
             {filtered.length} {filtered.length === 1 ? "product" : "products"}
           </p>
           {hasSearch || hasActiveFilters ? (

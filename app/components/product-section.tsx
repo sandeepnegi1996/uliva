@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import type { Product } from "../../types/product";
 import { ProductList } from "../(shop)/components/product-list";
 
@@ -7,6 +8,20 @@ type ProductSectionProps = {
 };
 
 export function ProductSection({ products }: ProductSectionProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (ref.current) {
+        const rect = ref.current.getBoundingClientRect();
+        setOffset(window.scrollY * 0.15 - rect.top * 0.15);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <motion.section
       aria-labelledby="product-heading"
@@ -15,6 +30,7 @@ export function ProductSection({ products }: ProductSectionProps) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
+      style={{ transform: `translateY(${offset}px)` }}
     >
       <div className="mx-auto max-w-[1360px] px-4 md:px-6 lg:px-8">
         <motion.div

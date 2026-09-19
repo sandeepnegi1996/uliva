@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 type Category = {
   name: string;
@@ -53,6 +54,20 @@ export function CategoryCard({ name, description, image, accent, gender }: Categ
 }
 
 export function CategorySection({ categories }: CategorySectionProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (ref.current) {
+        const rect = ref.current.getBoundingClientRect();
+        setOffset(window.scrollY * 0.1 - rect.top * 0.1);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <motion.section
       aria-labelledby="category-heading"
@@ -61,6 +76,8 @@ export function CategorySection({ categories }: CategorySectionProps) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
+      ref={ref}
+      style={{ transform: `translateY(${offset}px)` }}
     >
       <div className="mx-auto max-w-[1360px] px-4 md:px-6 lg:px-8">
         <motion.div

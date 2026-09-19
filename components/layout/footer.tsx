@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { formatPrice } from "../../utils/format";
+import { useHoverSound } from "../common/useHoverSound";
 
 const footerLinks = [
   {
@@ -21,6 +24,8 @@ const footerLinks = [
 ];
 
 export function Footer() {
+  const playHoverSound = useHoverSound();
+
   return (
     <footer className="border-t border-stone-200 bg-[#f0efe9] dark:border-stone-700 dark:bg-[#1e2520]">
       <div className="mx-auto grid max-w-[1360px] gap-8 px-4 py-10 md:grid-cols-[1.4fr_1fr_1fr] md:px-6 lg:px-8">
@@ -44,7 +49,8 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm font-medium text-[#1a2d2e] transition hover:text-[#2f7d3c] dark:text-[#8a9a94] dark:hover:text-[#90c86a]"
+                    onMouseEnter={() => playHoverSound(680, 0.06, 0.03)}
+                    className="text-sm font-medium text-[#1a2d2e] transition hover:text-[#2f7d3c] dark:text-[#8a9a94] dark:hover:text-[#90c86a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f3855] focus-visible:ring-2"
                   >
                     {link.label}
                   </Link>

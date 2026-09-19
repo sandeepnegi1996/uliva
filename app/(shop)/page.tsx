@@ -7,6 +7,7 @@ import { categories } from "../../data/categories";
 import { products as productData } from "../../data/products";
 import { CategorySection } from "../components/category-section";
 import { ProductSection } from "../components/product-section";
+import { CursorTrail } from "../../components/common/CursorTrail";
 
 const brandLogos = ["Myntra", "amazon", "Flipkart", "AJIO"];
 
@@ -54,6 +55,7 @@ function HeroParallaxImage() {
 export default function Home() {
   return (
     <div className="bg-transparent text-slate-900 dark:text-slate-200">
+      <CursorTrail enabled={typeof window !== "undefined"} />
       <section className="relative overflow-hidden bg-[#eadfc8] dark:bg-[#222a24] hero-glow">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-[-7%] top-[18%] h-64 w-64 rounded-full bg-[#f3e6c9]/70 blur-3xl" />

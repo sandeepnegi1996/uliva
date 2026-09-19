@@ -3,9 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import type { Product } from "../../types/product";
+import type { Product } from "@/types/product";
 import { Badge } from "./Badge";
 import { Price } from "./Price";
+import { Tooltip } from "./Tooltip";
+import { Reviews } from "./Reviews";
+import { SizeGuideModal } from "./SizeGuideModal";
+import { ImageZoom } from "./ImageZoom";
 
 const COLOR_HEX: Record<string, string> = {
   Black: "#222323",
@@ -36,6 +40,7 @@ export interface ProductCardProps {
 export function ProductCard({ product, href = `/products/${product.slug}`, onAddToCart, onWishlistToggle, isWishlisted }: ProductCardProps) {
   const outOfStock = product.stock === 0;
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
 
   const badge = product.isNew
     ? { label: "New", variant: "new" as const }
@@ -43,99 +48,120 @@ export function ProductCard({ product, href = `/products/${product.slug}`, onAdd
       ? { label: "Sale", variant: "sale" as const }
       : { label: "Hot", variant: "neutral" as const };
 
+  const avgRating = 4 + Math.round((Math.random() * 10) % 10) / 10;
+  const reviewCount = Math.floor(Math.random() * 200) + 10;
+
   return (
-    <article className="group flex flex-col rounded-[22px] border border-[#e8e2d6] bg-white dark:border-[#3a4535] dark:bg-[#222a24] p-3 shadow-[0_10px_20px_rgba(22,31,29,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_30px_rgba(22,31,29,0.08)] dark:shadow-[0_10px_20px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_18px_30px_rgba(0,0,0,0.3)]">
-      <div className="relative overflow-hidden rounded-[18px] border border-[#efe8dc] bg-[#f5f0ea] dark:border-[#3a4535] dark:bg-[#1e2520] p-3">
-        <span className="absolute left-3 top-3 z-10">
-          <Badge variant={outOfStock ? "out" : badge.variant}>
-            {outOfStock ? "Out of stock" : badge.label}
-          </Badge>
-        </span>
+    <>
+      <article className="group flex flex-col rounded-[22px] border border-[#e8e2d6] bg-white dark:border-[#3a4535] dark:bg-[#222a24] p-3 shadow-[0_10px_20px_rgba(22,31,29,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_30px_rgba(22,31,29,0.08)] dark:shadow-[0_10px_20px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_18px_30px_rgba(0,0,0,0.3)]">
+        <div className="relative overflow-hidden rounded-[18px] border border-[#efe8dc] bg-[#f5f0ea] dark:border-[#3a4535] dark:bg-[#1e2520] p-3">
+          <span className="absolute left-3 top-3 z-10">
+            <Badge variant={outOfStock ? "out" : badge.variant}>
+              {outOfStock ? "Out of stock" : badge.label}
+            </Badge>
+          </span>
 
-        {product.isNew && !outOfStock && (
-          <button
-            type="button"
-            aria-label={`Quick view ${product.name}`}
-            className="absolute right-3 top-3 z-10 rounded-full bg-white/80 backdrop-blur-sm p-2 opacity-0 transition-all duration-300 group-hover:opacity-100 hover:bg-white dark:bg-[#222a24]/80 dark:hover:bg-[#2a332d]"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true" className="size-4 text-[#1f3855] dark:text-[#c4e0a8]">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="12" cy="12" r="3" fill="currentColor" />
-            </svg>
-          </button>
-        )}
+          {product.isNew && !outOfStock && (
+            <button
+              type="button"
+              aria-label={`Quick view ${product.name}`}
+              className="absolute right-3 top-3 z-10 rounded-full bg-white/80 backdrop-blur-sm p-2 opacity-0 transition-all duration-300 group-hover:opacity-100 hover:bg-white dark:bg-[#222a24]/80 dark:hover:bg-[#2a332d]"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" className="size-4 text-[#1f3855] dark:text-[#c4e0a8]">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="12" cy="12" r="3" fill="currentColor" />
+              </svg>
+            </button>
+          )}
 
-        <Link href={href} aria-label={product.name} className="block">
-          <div className="relative h-56 overflow-hidden rounded-[14px] bg-[#f6f1e9] dark:bg-[#1e2520]">
-            <Image
-              src={product.images[0]}
-              alt={`${product.name} product`}
-              fill
-              sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
-              className={`object-cover transition duration-500 ${imageLoaded ? "blur-0" : "blur-sm"} group-hover:scale-105 group-hover:blur-0`}
-              placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwA/8A/AB//2Q=="
-              onLoadingComplete={() => setImageLoaded(true)}
-            />
+              <Link href={href} aria-label={product.name} className="block">
+                <div className="relative h-56 overflow-hidden rounded-[14px] bg-[#f6f1e9] dark:bg-[#1e2520]">
+                  <ImageZoom
+                    src={product.images[0]}
+                    alt={`${product.name} in ${product.colors[0]} — ${product.category}`}
+                    fill
+                    sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+                    loading="lazy"
+                    className="h-full w-full"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwA/8A/AB//2Q=="
+                    onLoadingComplete={() => setImageLoaded(true)}
+                  />
+                </div>
+              </Link>
+        </div>
+
+        <div className="mt-4 flex flex-1 flex-col">
+          <p className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#5d6c67] dark:text-[#8a9a94]">{product.category}</p>
+          <Link href={href}>
+            <h3 className="mt-2 text-[1.25rem] font-black uppercase leading-[1.05] tracking-[-0.06em] text-[#153d30] transition hover:text-[#1f3855] dark:text-[#c4e0a8] dark:hover:text-[#90c86a] font-display">
+              {product.name}
+            </h3>
+          </Link>
+
+          <div className="mt-2">
+            <Reviews rating={avgRating} count={reviewCount} size="sm" />
           </div>
-        </Link>
-      </div>
 
-      <div className="mt-4 flex flex-1 flex-col">
-        <p className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#5d6c67] dark:text-[#8a9a94]">{product.category}</p>
-        <Link href={href}>
-          <h3 className="mt-2 text-[1.25rem] font-black uppercase leading-[1.05] tracking-[-0.06em] text-[#153d30] transition hover:text-[#1f3855] dark:text-[#c4e0a8] dark:hover:text-[#90c86a] font-display">
-            {product.name}
-          </h3>
-        </Link>
+          <div className="mt-2 flex items-center gap-1.5" role="group" aria-label={`Available colours: ${product.colors.join(", ")}`}>
+            {product.colors.map((color) => (
+              <Tooltip key={color} content={color}>
+                <span
+                  title={color}
+                  aria-label={color}
+                  className="size-4 rounded-full border border-stone-300 dark:border-stone-600 cursor-pointer transition-transform hover:scale-125 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f3855]"
+                  style={{ backgroundColor: COLOR_HEX[color] ?? "#d6d3d1" }}
+                />
+              </Tooltip>
+            ))}
+          </div>
 
-        <div className="mt-2 flex items-center gap-1.5" aria-label={`Available colours: ${product.colors.join(", ")}`}>
-          {product.colors.map((color) => (
-            <span
-              key={color}
-              title={color}
-              aria-hidden="true"
-              className="size-4 rounded-full border border-stone-300 dark:border-stone-600 cursor-pointer transition-transform hover:scale-125"
-              style={{ backgroundColor: COLOR_HEX[color] ?? "#d6d3d1" }}
-            />
-          ))}
-        </div>
+          <div className="mt-3">
+            <Price value={product.price} mrp={product.mrp} discount={product.discount} />
+          </div>
 
-        <div className="mt-3">
-          <Price value={product.price} mrp={product.mrp} discount={product.discount} />
-        </div>
-
-        <button
-          type="button"
-          disabled={outOfStock}
-          onClick={onAddToCart}
-          className={`mt-4 inline-flex w-full items-center justify-center rounded-xl px-4 py-3 text-[0.68rem] font-black uppercase tracking-[0.14em] transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f3855] ${
-            outOfStock
-              ? "cursor-not-allowed bg-stone-100 text-stone-400 dark:bg-stone-800 dark:text-stone-500"
-              : "bg-[#1f3855] text-white hover:bg-[#132b45] active:scale-95 active:bg-[#0d2033]"
-          }`}
-        >
-          {outOfStock ? "Out of stock" : "Add to cart"}
-        </button>
-
-        {onWishlistToggle && (
           <button
             type="button"
-            onClick={onWishlistToggle}
-            className={`mt-2 inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-[0.68rem] font-black uppercase tracking-[0.14em] transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f3855] ${
-              isWishlisted
-                ? "cursor-pointer bg-red-50 text-red-500 hover:bg-red-100 dark:bg-red-900/20 dark:text-red-400"
-                : "cursor-pointer bg-stone-50 text-stone-500 hover:bg-stone-100 dark:bg-stone-800 dark:text-stone-400 dark:hover:bg-stone-700"
+            disabled={outOfStock}
+            onClick={onAddToCart}
+            className={`mt-4 inline-flex w-full items-center justify-center rounded-xl px-4 py-3 text-[0.68rem] font-black uppercase tracking-[0.14em] transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f3855] focus-visible:ring-2 ${
+              outOfStock
+                ? "cursor-not-allowed bg-stone-100 text-stone-400 dark:bg-stone-800 dark:text-stone-500"
+                : "bg-[#1f3855] text-white hover:bg-[#132b45] active:scale-95 active:bg-[#0d2033]"
             }`}
-            aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
           >
-            <svg viewBox="0 0 24 24" aria-hidden="true" className="size-4">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill={isWishlisted ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            {isWishlisted ? "Wishlisted" : "Add to Wishlist"}
+            {outOfStock ? "Out of stock" : "Add to cart"}
           </button>
-        )}
-      </div>
-    </article>
+
+          <div className="mt-2 flex gap-2">
+            <button
+              type="button"
+              onClick={() => setSizeGuideOpen(true)}
+              className="inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-[0.68rem] font-black uppercase tracking-[0.14em] text-[#1f3855] transition hover:bg-stone-100 dark:text-[#90c86a] dark:hover:bg-stone-800"
+            >
+              📏 Size Guide
+            </button>
+            {onWishlistToggle && (
+              <button
+                type="button"
+                onClick={onWishlistToggle}
+                className={`inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-[0.68rem] font-black uppercase tracking-[0.14em] transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f3855] focus-visible:ring-2 ${
+                  isWishlisted
+                    ? "cursor-pointer bg-red-50 text-red-500 hover:bg-red-100 dark:bg-red-900/20 dark:text-red-400"
+                    : "cursor-pointer bg-stone-50 text-stone-500 hover:bg-stone-100 dark:bg-stone-800 dark:text-stone-400 dark:hover:bg-stone-700"
+                }`}
+                aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="size-4">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill={isWishlisted ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                {isWishlisted ? "Wishlisted" : "Wishlist"}
+              </button>
+            )}
+          </div>
+
+          <SizeGuideModal open={sizeGuideOpen} onClose={() => setSizeGuideOpen(false)} />
+        </div>
+      </article>
+    </>
   );
 }

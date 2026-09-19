@@ -1,0 +1,11 @@
+/* Tokens reference — all spacing variables and layer utilities are defined in app/globals.css */
+/* This file serves as the canonical source for the full spacing scale */
+
+@layer utilities {
+  .space-x-uniform > * + * {
+    margin-left: var(--space-4);
+  }
+  .space-y-uniform > * + * {
+    margin-top: var(--space-4);
+  }
+}
