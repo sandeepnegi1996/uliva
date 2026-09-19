@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type Category = {
   name: string;
@@ -6,6 +7,7 @@ type Category = {
   image: string;
   tone: string;
   accent: string;
+  gender?: string;
 };
 
 type CategoryCardProps = Category;
@@ -14,10 +16,11 @@ type CategorySectionProps = {
   categories: Category[];
 };
 
-export function CategoryCard({ name, description, image, tone, accent }: CategoryCardProps) {
+export function CategoryCard({ name, description, image, tone, accent, gender }: CategoryCardProps) {
+  const href = gender ? `/products?gender=${gender}` : "/products";
   return (
-    <a
-      href="#"
+    <Link
+      href={href}
       className={`group relative isolate flex min-h-[300px] overflow-hidden rounded-[22px] border border-[#e8e2d6] bg-gradient-to-br ${tone} p-3 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1d3a2d]`}
     >
       <div className="relative min-h-[274px] w-full overflow-hidden rounded-[16px] bg-white/35">
@@ -44,7 +47,7 @@ export function CategoryCard({ name, description, image, tone, accent }: Categor
           </span>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 
