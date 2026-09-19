@@ -12,12 +12,12 @@ export function PlaceholderPage({ title, description, action }: PlaceholderPageP
   return (
     <section className="mx-auto w-full max-w-[1360px] px-4 py-12 md:px-6 lg:px-8">
       <header className="mb-8 flex flex-col items-center text-center">
-        <div className="inline-flex items-center gap-2 text-[#1d3a2d]">
+        <div className="inline-flex items-center gap-2 text-[#1d3a2d] dark:text-[#c4e0a8]">
           <span className="h-1.5 w-1.5 rounded-full bg-[#6e9d50]" />
-          <span className="text-[0.72rem] font-black uppercase tracking-[0.22em]">Uliva</span>
+          <span className="text-[0.72rem] font-black uppercase tracking-[0.22em] text-[#153d30] dark:text-[#c4e0a8]">Uliva</span>
           <span className="h-1.5 w-1.5 rounded-full bg-[#6e9d50]" />
         </div>
-        <h1 className="mt-2 text-3xl font-black uppercase tracking-[-0.05em] text-[#153d30]">{title}</h1>
+        <h1 className="mt-2 text-3xl font-black uppercase tracking-[-0.05em] text-[#153d30] dark:text-[#c4e0a8]">{title}</h1>
       </header>
       <div className="mx-auto max-w-lg">
         <EmptyState

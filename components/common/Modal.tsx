@@ -41,19 +41,19 @@ export function Modal({ open, onClose, title, children, size = "md" }: ModalProp
       aria-modal="true"
       aria-label={title}
     >
-      <div
-        className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm"
-        onClick={onClose}
-        aria-hidden="true"
-      />
-      <div className={`relative w-full ${sizeClasses[size]} rounded-2xl bg-white shadow-2xl`}>
-        <div className="flex items-center justify-between border-b border-[#e8e2d6] px-5 py-4">
-          <h2 className="text-base font-black uppercase tracking-[-0.02em] text-[#153d30]">{title}</h2>
+        <div
+          className="absolute inset-0 bg-slate-900/50 backdrop-blur-lg"
+          onClick={onClose}
+          aria-hidden="true"
+        />
+      <div className={`relative w-full ${sizeClasses[size]} rounded-2xl bg-white shadow-2xl dark:bg-[#222a24]`}>
+        <div className="flex items-center justify-between border-b border-[#e8e2d6] px-5 py-4 dark:border-stone-700">
+          <h2 className="text-base font-black uppercase tracking-[-0.02em] text-[#153d30] dark:text-[#c4e0a8]">{title}</h2>
           <button
             type="button"
             onClick={onClose}
             aria-label="Close dialog"
-            className="rounded-full p-1.5 text-slate-500 transition hover:bg-stone-100 hover:text-slate-800"
+            className="rounded-full p-1.5 text-slate-500 transition hover:bg-stone-100 hover:text-slate-800 dark:text-slate-400 dark:hover:bg-stone-800"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true" className="size-5">
               <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />

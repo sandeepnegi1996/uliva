@@ -28,7 +28,7 @@ export function ConfirmationModal({
 }: ConfirmationModalProps) {
   return (
     <Modal open={open} onClose={onCancel} title={title} size="sm">
-      <p className="text-sm text-[#6a7a74]">{message}</p>
+      <p className="text-sm text-[#6a7a74] dark:text-[#8a9a94]">{message}</p>
       <div className="mt-5 flex justify-end gap-3">
         <Button type="button" variant="ghost" onClick={onCancel} disabled={loading}>
           {cancelLabel}
