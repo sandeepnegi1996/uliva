@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import type { Product } from "../../types/product";
 import { Badge } from "./Badge";
 import { Price } from "./Price";
@@ -28,10 +29,13 @@ export interface ProductCardProps {
   product: Product;
   href?: string;
   onAddToCart?: () => void;
+  onWishlistToggle?: () => void;
+  isWishlisted?: boolean;
 }
 
-export function ProductCard({ product, href = `/products/${product.slug}`, onAddToCart }: ProductCardProps) {
+export function ProductCard({ product, href = `/products/${product.slug}`, onAddToCart, onWishlistToggle, isWishlisted }: ProductCardProps) {
   const outOfStock = product.stock === 0;
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const badge = product.isNew
     ? { label: "New", variant: "new" as const }
@@ -48,6 +52,19 @@ export function ProductCard({ product, href = `/products/${product.slug}`, onAdd
           </Badge>
         </span>
 
+        {product.isNew && !outOfStock && (
+          <button
+            type="button"
+            aria-label={`Quick view ${product.name}`}
+            className="absolute right-3 top-3 z-10 rounded-full bg-white/80 backdrop-blur-sm p-2 opacity-0 transition-all duration-300 group-hover:opacity-100 hover:bg-white dark:bg-[#222a24]/80 dark:hover:bg-[#2a332d]"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="size-4 text-[#1f3855] dark:text-[#c4e0a8]">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="12" cy="12" r="3" fill="currentColor" />
+            </svg>
+          </button>
+        )}
+
         <Link href={href} aria-label={product.name} className="block">
           <div className="relative h-56 overflow-hidden rounded-[14px] bg-[#f6f1e9] dark:bg-[#1e2520]">
             <Image
@@ -55,9 +72,10 @@ export function ProductCard({ product, href = `/products/${product.slug}`, onAdd
               alt={`${product.name} product`}
               fill
               sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
-              className="object-cover transition duration-500 group-hover:scale-105"
+              className={`object-cover transition duration-500 ${imageLoaded ? "blur-0" : "blur-sm"} group-hover:scale-105 group-hover:blur-0`}
               placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwA/8A/AB//2Q=="
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwA/8A/AB//2Q=="
+              onLoadingComplete={() => setImageLoaded(true)}
             />
           </div>
         </Link>
@@ -77,7 +95,7 @@ export function ProductCard({ product, href = `/products/${product.slug}`, onAdd
               key={color}
               title={color}
               aria-hidden="true"
-              className="size-4 rounded-full border border-stone-300 dark:border-stone-600"
+              className="size-4 rounded-full border border-stone-300 dark:border-stone-600 cursor-pointer transition-transform hover:scale-125"
               style={{ backgroundColor: COLOR_HEX[color] ?? "#d6d3d1" }}
             />
           ))}
@@ -99,6 +117,24 @@ export function ProductCard({ product, href = `/products/${product.slug}`, onAdd
         >
           {outOfStock ? "Out of stock" : "Add to cart"}
         </button>
+
+        {onWishlistToggle && (
+          <button
+            type="button"
+            onClick={onWishlistToggle}
+            className={`mt-2 inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-[0.68rem] font-black uppercase tracking-[0.14em] transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1f3855] ${
+              isWishlisted
+                ? "cursor-pointer bg-red-50 text-red-500 hover:bg-red-100 dark:bg-red-900/20 dark:text-red-400"
+                : "cursor-pointer bg-stone-50 text-stone-500 hover:bg-stone-100 dark:bg-stone-800 dark:text-stone-400 dark:hover:bg-stone-700"
+            }`}
+            aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="size-4">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill={isWishlisted ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            {isWishlisted ? "Wishlisted" : "Add to Wishlist"}
+          </button>
+        )}
       </div>
     </article>
   );

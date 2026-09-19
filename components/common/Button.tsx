@@ -10,6 +10,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   fullWidth?: boolean;
   loading?: boolean;
+  icon?: ReactNode;
   children: ReactNode;
 }
 
@@ -28,7 +29,7 @@ const sizeClasses: Record<ButtonSize, string> = {
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { variant = "primary", size = "md", fullWidth = false, loading = false, className = "", children, disabled, ...rest },
+  { variant = "primary", size = "md", fullWidth = false, loading = false, icon, className = "", children, disabled, ...rest },
   ref,
 ) {
   const classes = [
@@ -47,8 +48,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
         <span
           aria-hidden="true"
           className="size-3.5 animate-spin rounded-full border-2 border-current border-t-transparent"
+          style={{ borderTopColor: variant === "ghost" || variant === "outline" ? "currentColor" : undefined }}
         />
       )}
+      {!loading && icon ? <span className="inline-flex items-center">{icon}</span> : null}
       {children}
     </button>
   );

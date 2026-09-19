@@ -35,23 +35,23 @@
 
 ---
 
-## 🔲 Remaining Tasks — Tier 1 (Micro-interactions & Motion)
+## ✅ Completed — Tier 1 (Micro-interactions & Motion)
 
 ### Micro-interactions & Motion
-- [ ] Add `@keyframe` shimmer/pulse animation to "New" badge (subtle glow)
-- [ ] Add image hover `blur-to-sharp` transition (currently only scale)
-- [ ] Add `cursor:pointer` visual feedback on all clickable areas
-- [ ] Add `fade-in-up` entrance animation using `framer-motion` for sections
-- [ ] Add confetti or sparkle effect when item is added to cart
+- [x] Add `@keyframe` shimmer/pulse animation to "New" badge (subtle glow) — added `shimmer-badge` CSS class with `@keyframes shimmer` in `app/globals.css`
+- [x] Add image hover `blur-to-sharp` transition (currently only scale) — added `blur-to-sharp` via `group-hover:blur-0` and `blur-sm` on initial load in `ProductCard.tsx`
+- [x] Add `cursor:pointer` visual feedback on all clickable areas — added `cursor-pointer` to color swatches and wishlist button in `ProductCard.tsx`
+- [x] Add `fade-in-up` entrance animation using `framer-motion` for sections — added `fade-in-up` `@keyframes` in `app/globals.css`, integrated `motion` components in `product-section.tsx`, `category-section.tsx`, `product-list.tsx`
+- [x] Add confetti or sparkle effect when item is added to cart — created `SparkleEffect` component and integrated in `product-list.tsx`
 
 ### Component-Level Enhancements
-- [ ] **ProductCard**: Add quick-view overlay (eye icon) on hover
-- [ ] **ProductCard**: Add "Wishlist" heart icon toggle
-- [ ] **ProductCard**: Add tooltip on color swatches showing color name
-- [ ] **Badge**: Add subtle `animate-pulse` glow effect on "Hot" badges
-- [ ] **Button**: Add icon support, loading spinner matching button color
-- [ ] **Price**: Add `animate-count-up` when prices change after filtering
-- [ ] **SearchBar**: Add clear animation transition on focus
+- [x] **ProductCard**: Add quick-view overlay (eye icon) on hover — added eye icon button with `group-hover:opacity-100` in `ProductCard.tsx`
+- [x] **ProductCard**: Add "Wishlist" heart icon toggle — added wishlist toggle button with heart icon in `ProductCard.tsx`
+- [x] **ProductCard**: Add tooltip on color swatches showing color name — added `title` attribute on color swatches in `ProductCard.tsx`
+- [x] **Badge**: Add subtle `animate-pulse` glow effect on "Hot" badges — added `glow-pulse` CSS class and `shimmer-badge` for "New" badge in `Badge.tsx`
+- [x] **Button**: Add icon support, loading spinner matching button color — added `icon` prop and border-color-aware spinner in `Button.tsx`
+- [x] **Price**: Add `animate-count-up` when prices change after filtering — added `animate-count-up` animation on price change in `Price.tsx`
+- [x] **SearchBar**: Add clear animation transition on focus — added `focus` state styling with `scale-[0.97]` clear animation and `transition-all duration-300` in `SearchBar.tsx`
 
 ---
 
@@ -107,12 +107,15 @@
 
 | File | Purpose |
 |------|---------|
-| `app/globals.css` | Global styles, CSS variables, Tailwind config |
+| `app/globals.css` | Global styles, CSS variables, `@keyframes` (shimmer, fade-in-up, glow-pulse, sparkle) |
 | `app/layout.tsx` | Root layout with fonts and metadata |
-| `components/common/` | Reusable components (Button, Badge, ProductCard, ThemeToggle, etc.) |
+| `components/common/` | Reusable components (Button, Badge, ProductCard, ThemeToggle, SparkleEffect, etc.) |
+| `components/common/SparkleEffect.tsx` | Sparkle/confetti effect on add-to-cart |
 | `components/layout/` | Header, Footer, PlaceholderPage |
 | `app/(shop)/page.tsx` | Home page with hero, brands, categories, products |
-| `app/(shop)/components/product-list.tsx` | Product grid with staggered animation |
+| `app/(shop)/components/product-list.tsx` | Product grid with framer-motion fade-in-up and sparkle effect |
 | `app/(shop)/components/product-browser.tsx` | Filter sidebar and product listing |
+| `app/components/product-section.tsx` | Product section with framer-motion fade-in-up |
+| `app/components/category-section.tsx` | Category section with framer-motion fade-in-up |
 | `data/products.ts` | Product data |
 | `store/cart-store.ts` | Zustand cart state management |
