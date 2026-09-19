@@ -133,8 +133,8 @@ export default function Home() {
               D
             </div>
             <div className="leading-none">
-              <div className="text-[15px] font-black uppercase tracking-[0.12em] text-[#163d34]">Doctor</div>
-              <div className="mt-0.5 text-[7px] font-bold uppercase tracking-[0.32em] text-[#899a88]">Extra Soft</div>
+              <div className="text-[15px] font-black uppercase tracking-[0.12em] text-[#163d34]">Uliva</div>
+              <div className="mt-0.5 text-[7px] font-bold uppercase tracking-[0.32em] text-[#899a88]">Comfort</div>
             </div>
           </div>
 
