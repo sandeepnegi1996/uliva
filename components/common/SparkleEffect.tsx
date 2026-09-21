@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Sparkle {
@@ -22,9 +22,11 @@ export function SparkleEffect({ count = 12, active }: { count?: number; active: 
     setTimeout(() => setSparkles([]), 1000);
   }, [count]);
 
-  if (active) {
-    triggerSparkles();
-  }
+  useEffect(() => {
+    if (!active) return;
+    const id = setTimeout(triggerSparkles, 0);
+    return () => clearTimeout(id);
+  }, [active, triggerSparkles]);
 
   return (
     <AnimatePresence>

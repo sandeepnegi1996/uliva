@@ -13,8 +13,13 @@ interface TrailParticle {
 export function CursorTrail({ enabled = true }: { enabled?: boolean }) {
   const [particles, setParticles] = useState<TrailParticle[]>([]);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [mounted, setMounted] = useState(false);
   const idRef = useRef(0);
   const rafRef = useRef(0);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!enabled) return;
@@ -51,7 +56,7 @@ export function CursorTrail({ enabled = true }: { enabled?: boolean }) {
     return () => clearInterval(interval);
   }, [mousePos, enabled]);
 
-  if (!enabled) return null;
+  if (!enabled || !mounted) return null;
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[9998]" aria-hidden="true">
