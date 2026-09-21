@@ -11,7 +11,7 @@ import { Reviews } from "./Reviews";
 import { SizeGuideModal } from "./SizeGuideModal";
 import { ImageZoom } from "./ImageZoom";
 
-const COLOR_HEX: Record<string, string> = {
+export const COLOR_HEX: Record<string, string> = {
   Black: "#222323",
   Brown: "#7a4a2b",
   White: "#f5f3f0",

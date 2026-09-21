@@ -4,10 +4,8 @@ import { Badge } from "../../../../components/common/Badge";
 import { Price } from "../../../../components/common/Price";
 import { Breadcrumbs } from "../../../../components/common/Breadcrumbs";
 import { ProductGallery } from "../../../../components/common/ProductGallery";
-import { ProductDetailActions } from "../../../../components/common/ProductDetailActions";
-import { AddToCartButton } from "../../../../components/common/AddToCartButton";
+import { ProductPurchasePanel } from "../../../../components/common/ProductPurchasePanel";
 import { Reviews } from "../../../../components/common/Reviews";
-import { StickyAddToCart } from "../../../../components/common/StickyAddToCart";
 import { Recommendations } from "../../../../components/common/Recommendations";
 import { products } from "../../../../data/products";
 
@@ -65,36 +63,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
           <p className="mt-5 max-w-prose text-sm leading-relaxed text-[#53665c] dark:text-[#8a9a94] line-clamp-3">{product.description}</p>
 
-          <div className="mt-6">
-            <p className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#5d6c67] dark:text-[#8a9a94]">Colours</p>
-            <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label="Available colours">
-              {product.colors.map((color) => (
-                <span key={color} className="rounded-full border border-stone-300 bg-white px-3 py-1.5 text-xs font-medium text-[#1a2d2e] dark:border-stone-600 dark:bg-[#222a24] dark:text-[#e8ede8]" title={color}>
-                  {color}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-4">
-            <p className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[#5d6c67] dark:text-[#8a9a94]">Sizes</p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {product.sizes.map((size) => (
-                <span key={size} className="rounded-lg border border-stone-300 bg-white px-3 py-1.5 text-xs font-bold text-[#1a2d2e] dark:border-stone-600 dark:bg-[#222a24] dark:text-[#e8ede8]">
-                  {size}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <AddToCartButton product={product} />
-
-          <ProductDetailActions product={product} products={products} />
+          <ProductPurchasePanel product={product} products={products} />
         </div>
       </div>
 
       <Recommendations products={products} currentProductId={product.id} />
-      <StickyAddToCart product={product} />
     </section>
   );
 }
