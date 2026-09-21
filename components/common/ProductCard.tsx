@@ -48,8 +48,8 @@ export function ProductCard({ product, href = `/products/${product.slug}`, onAdd
       ? { label: "Sale", variant: "sale" as const }
       : { label: "Hot", variant: "neutral" as const };
 
-  const avgRating = 4 + Math.round((Math.random() * 10) % 10) / 10;
-  const reviewCount = Math.floor(Math.random() * 200) + 10;
+  const avgRating = 4 + (product.id.charCodeAt(product.id.length - 1) % 10) / 10;
+  const reviewCount = ((product.id.length * 37) % 240) + 12;
 
   return (
     <>

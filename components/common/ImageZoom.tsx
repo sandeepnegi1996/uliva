@@ -59,7 +59,7 @@ export function ImageZoom({
           priority={priority}
           loading={loading}
           className="object-cover transition-transform duration-500"
-          placeholder="blur"
+          placeholder={blurDataURL ? "blur" : "empty"}
           blurDataURL={blurDataURL}
           onLoadingComplete={onLoadingComplete}
         />

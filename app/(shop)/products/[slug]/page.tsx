@@ -5,6 +5,7 @@ import { Price } from "../../../../components/common/Price";
 import { Breadcrumbs } from "../../../../components/common/Breadcrumbs";
 import { ProductGallery } from "../../../../components/common/ProductGallery";
 import { ProductDetailActions } from "../../../../components/common/ProductDetailActions";
+import { AddToCartButton } from "../../../../components/common/AddToCartButton";
 import { Reviews } from "../../../../components/common/Reviews";
 import { StickyAddToCart } from "../../../../components/common/StickyAddToCart";
 import { Recommendations } from "../../../../components/common/Recommendations";
@@ -86,20 +87,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
 
-          <div className="mt-8 rounded-xl border border-[#e8e2d6] bg-[#f0efe9] px-4 py-3 text-xs font-medium text-[#53665c] dark:border-stone-700 dark:bg-[#1e2520] dark:text-[#8a9a94]">
-            Size &amp; colour selection and Add to Cart arrive in Phase 7.
-            <Link href="/products" className="ml-1 font-bold text-[#2f7d3c] dark:text-[#90c86a] underline-offset-2 hover:underline">
-              Explore products
-            </Link>
-          </div>
-
-          <button
-            type="button"
-            disabled
-            className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-[#1f3855] px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-white opacity-60 disabled:cursor-not-allowed sm:w-auto dark:bg-[#3a5a4a]"
-          >
-            Add to Cart
-          </button>
+          <AddToCartButton product={product} />
 
           <ProductDetailActions product={product} products={products} />
         </div>
