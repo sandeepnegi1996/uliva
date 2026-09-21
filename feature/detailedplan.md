@@ -449,15 +449,15 @@ Show validation where applicable.
 
 ## Acceptance Criteria
 
-* [ ] Correct product opens from product listing.
-* [ ] Image gallery works.
-* [ ] Size selection works.
-* [ ] Colour selection works.
-* [ ] Quantity selection works.
-* [ ] Add to Cart works.
-* [ ] Buy Now works.
-* [ ] Out-of-stock products cannot be purchased.
-* [ ] Validation messages are displayed correctly.
+* [x] Correct product opens from product listing.
+* [x] Image gallery works.
+* [x] Size selection works.
+* [x] Colour selection works.
+* [x] Quantity selection works.
+* [x] Add to Cart works.
+* [x] Buy Now works.
+* [x] Out-of-stock products cannot be purchased.
+* [x] Validation messages are displayed correctly.
 
 ---
 
